@@ -33,6 +33,7 @@
                 android:layout_weight="90">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:drawableStart="@drawable/ic_person_black_24dp"
                     android:id="@+id/cedula"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -52,6 +53,7 @@
                 android:layout_weight="90">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:drawableStart="@drawable/ic_lock_black_24dp"
                     android:id="@+id/clave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
