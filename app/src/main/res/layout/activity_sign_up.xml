@@ -60,14 +60,16 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/textInputLayoutStyle"
-                android:layout_weight="90">
+                android:layout_weight="90"
+                app:hintAnimationEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </TableRow>
@@ -76,6 +78,7 @@
             style="@style/tableRowStyle"
             android:weightSum="100">
             <Button
+                android:drawableStart="@drawable/ic_save"
                 android:layout_weight="20"
                 android:id="@+id/send"
                 android:text="Send"

@@ -5,6 +5,8 @@ import com.example.milogin.Logic.Job;
 import com.example.milogin.Logic.JobRequest;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 
 public class JobApplicationModel {
     private ArrayList<Job> jobs = Data.getInstance().getJobs();
@@ -17,6 +19,19 @@ public class JobApplicationModel {
         }
 
         return jobs_names;
+    }
+
+    public ArrayList<String> getCountries(){
+        Locale[] locales = Locale.getAvailableLocales();
+        ArrayList<String> countries = new ArrayList<String>();
+        for (Locale locale : locales) {
+            String country = locale.getDisplayCountry();
+            if (country.trim().length()>0 && !countries.contains(country)) {
+                countries.add(country);
+            }
+        }
+        Collections.sort(countries);
+        return countries;
     }
 
     public void addJobRequest(JobRequest request){

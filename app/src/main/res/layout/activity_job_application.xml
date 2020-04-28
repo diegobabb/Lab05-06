@@ -168,16 +168,10 @@
                             android:hint="ZIP"
                             android:inputType="number" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/country"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Country"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/country"
+                        style="@style/spinnerItemStyle" />
                 </LinearLayout>
 
             </TableRow>
@@ -258,10 +252,7 @@
 
                 <Spinner
                     android:id="@+id/position"
-                    style="@style/spinnerItemStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="100" />
+                    style="@style/spinnerItemStyle" />
             </TableRow>
 
             <TableRow
@@ -314,6 +305,7 @@
                     style="@style/buttonStyle"
                     android:layout_marginBottom="50dp"
                     android:layout_weight="50"
+                    android:drawableStart="@drawable/ic_save"
                     android:text="SEND" />
             </TableRow>
         </TableLayout>

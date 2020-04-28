@@ -34,11 +34,11 @@ public class JobApplication extends AppCompatActivity {
     JobApplicationModel model;
     DatePickerDialog picker;
     private EditText firstname, lastname;
-    private EditText street_address, street_address_2, city, state, zip, country;
+    private EditText street_address, street_address_2, city, state, zip;
     private EditText email;
     private EditText area_code, phone;
     private EditText start_date;
-    private Spinner job;
+    private Spinner job, country;
     private Button send_data;
     private Toolbar toolbar;
 
@@ -71,7 +71,7 @@ public class JobApplication extends AppCompatActivity {
         this.send_data = findViewById(R.id.send_data);
 
         //Inicializacion de spinner
-        initSpinner();;
+        initSpinner();
 
         // Evento para que muestra el calendario
         // BY https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
@@ -110,12 +110,17 @@ public class JobApplication extends AppCompatActivity {
 
     }
 
-    private void initSpinner(){
+    private void initSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, model.getJobsNames());
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.job.setAdapter(adapter);
+        ArrayAdapter<String> adapterCountry = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, model.getCountries());
+
+        adapterCountry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.country.setAdapter(adapterCountry);
     }
 
     private JobRequest getJobByFields(){
@@ -133,7 +138,7 @@ public class JobApplication extends AppCompatActivity {
                 city.getText().toString().trim(),
                 state.getText().toString().trim(),
                 zip,
-                country.getText().toString().trim(),
+                country.getSelectedItem().toString(),
                 email.getText().toString().trim(),
                 area_code,
                 phone);
