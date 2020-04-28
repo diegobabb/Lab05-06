@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.login.SignUp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow style="@style/tableRowStyle">
+
+            <TextView
+                style="@style/tituloStyle"
+                android:text="Sign Up" />
+        </TableRow>
+
+        <TableRow style="@style/tableRowStyle"
+            android:weightSum="100">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_weight="90">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </TableRow>
+
+        <TableRow style="@style/tableRowStyle"
+            android:weightSum="100">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_weight="90">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ID"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </TableRow>
+
+        <TableRow
+            style="@style/tableRowStyle"
+            android:weightSum="100">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_weight="90">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </TableRow>
+
+        <TableRow
+            style="@style/tableRowStyle"
+            android:weightSum="100">
+            <Button
+                android:layout_weight="20"
+                android:id="@+id/send"
+                android:text="Send"
+                app:icon="@drawable/ic_input"
+                app:iconSize="30dp"
+                style="@style/buttonStyle"/>
+        </TableRow>
+
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.jobApplication.JobApplication">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar">
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:stretchColumns="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow style="@style/tableRowStyle">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_column="0"
+                    android:src="@drawable/ic_business" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_span="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/tituloStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textColor="@color/verdeOpaco"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Full Name" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/first_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="First Name"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/last_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Last Name"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:weightSum="7">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:layout_gravity="top"
+                    android:text="Address" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/street_address_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Street Addr"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/street_address_line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Street Addr 2"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="City"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/province"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Province"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/postal_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="ZIP"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/country"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Country"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Email Address" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout style="@style/textInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Email address"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:weightSum="100">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Phone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="20">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/area_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Area"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_weight="80">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:weightSum="100">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Applying" />
+
+                <Spinner
+                    android:id="@+id/position"
+                    style="@style/spinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="100" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Start Date" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_weight="90">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Date"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:weightSum="10">
+
+                <TextView
+                    style="@style/TextDivisionStyle"
+                    android:text="Upload Resume" />
+
+                <Button
+                    android:id="@+id/resume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:text="UPLOAD" />
+            </TableRow>
+
+            <TableRow
+                style="@style/tableRowStyle"
+                android:weightSum="100">
+
+                <Button
+                    android:id="@+id/send_data"
+                    style="@style/buttonStyle"
+                    android:layout_marginBottom="50dp"
+                    android:layout_weight="50"
+                    android:text="SEND" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
