@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.milogin.R;
 import com.example.milogin.Logic.CurrentUser;
-import com.example.milogin.activities.MyProfile;
 import com.example.milogin.activities.login.MainActivity;
 
 public class JobApplicationList extends AppCompatActivity {
@@ -32,10 +31,6 @@ public class JobApplicationList extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "See ya!",Toast.LENGTH_LONG).show();
                 CurrentUser.setUser(null);
                 Intent intent = new Intent(JobApplicationList.this, MainActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.upt_pass:
-                intent = new Intent(JobApplicationList.this, MyProfile.class);
                 startActivity(intent);
                 break;
             default:

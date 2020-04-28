@@ -4,7 +4,7 @@ import com.example.milogin.DataAccess.Data;
 import com.example.milogin.Logic.User;
 
 
-class LoginModel {
+public class LoginModel {
 
     public LoginModel(){
 
@@ -20,9 +20,17 @@ class LoginModel {
         return null;
     }
 
+    public User getUserByID(String id) {
+        for (User u : Data.getInstance().getUsers()) {
+            if (id.equals(u.getID())) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     public boolean addUser(User u){
         return Data.getInstance().addUser(u);
     }
-
 
 }

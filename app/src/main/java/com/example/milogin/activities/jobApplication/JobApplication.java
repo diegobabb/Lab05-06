@@ -24,7 +24,6 @@ import com.example.milogin.Logic.Job;
 import com.example.milogin.Logic.JobRequest;
 import com.example.milogin.Logic.Person;
 import com.example.milogin.Logic.CurrentUser;
-import com.example.milogin.activities.MyProfile;
 import com.example.milogin.activities.login.MainActivity;
 
 import java.util.Calendar;
@@ -157,10 +156,6 @@ public class JobApplication extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "See ya!",Toast.LENGTH_LONG).show();
                 intent = new Intent(JobApplication.this, MainActivity.class);
                 CurrentUser.setUser(null);
-                startActivity(intent);
-                break;
-            case R.id.upt_pass:
-                intent = new Intent(JobApplication.this, MyProfile.class);
                 startActivity(intent);
                 break;
             default:

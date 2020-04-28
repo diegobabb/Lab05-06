@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MyProfile"></activity>
+        <activity android:name=".activities.login.UpdatePassword"></activity>
         <activity android:name=".activities.login.SignUp" />
         <activity android:name=".activities.JobApplicationList.JobApplicationList" />
         <activity android:name=".activities.jobApplication.JobApplication" />

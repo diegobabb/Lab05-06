@@ -1,8 +1,9 @@
 package com.example.milogin.Logic;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class JobRequest {
+public class JobRequest implements Serializable {
 
     private Person applicant;
     private Date start_date;

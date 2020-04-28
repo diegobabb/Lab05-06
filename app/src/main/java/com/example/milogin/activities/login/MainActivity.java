@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText id;
     private EditText password;
     private Button login;
+    private TextView updatePass;
     private TextView signUp;
     private LoginModel model;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         this.login = (Button) findViewById(R.id.ingresar);
 
         this.signUp = findViewById(R.id.signUp);
+        this.updatePass = findViewById(R.id.updatePassword);
 
         if(signUp!=null) signUp.requestFocus();
 
@@ -60,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intent);
+            }
+        });
+
+        this.updatePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UpdatePassword.class);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,8 @@
 package com.example.milogin.Logic;
 
-public class Person
+import java.io.Serializable;
+
+public class Person implements Serializable
 {
     private String fullname;
     private String street_address;

@@ -3,4 +3,5 @@
     <string name="title">Job Application</string>
     <string name="description">Please complete the form below to apply for a position with us</string>
     <string name="create_account"><b> Not Account Yet?<u> Create One</u> </b> </string>
+    <string name="update_pass"><b>or <u>Update Password</u> </b> </string>
 </resources>
