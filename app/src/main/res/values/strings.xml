@@ -5,4 +5,15 @@
     <string name="create_account"><b> Not Account Yet?<u> Create One</u> </b> </string>
     <string name="update_pass"><b>or <u>Update Password</u> </b> </string>
     <string name="country">Country</string>
+    <string name="invalid_firstname">Invalid First Name</string>
+    <string name="invalid_lastname">Invalid Last Name</string>
+    <string name="invalid_street">Invalid Street Address</string>
+    <string name="invalid_street2">Invalid Street Address 2</string>
+    <string name="invalid_city">Invalid City</string>
+    <string name="invalid_province">Invalid Province</string>
+    <string name="invalid_zip">Invalid ZIP</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="invalid_area">Invalid Area</string>
+    <string name="invalid_phone">Invalid Phone</string>
+    <string name="invalid_date">Must Select a Date</string>
 </resources>

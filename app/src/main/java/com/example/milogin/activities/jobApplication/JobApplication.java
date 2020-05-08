@@ -1,13 +1,17 @@
 package com.example.milogin.activities.jobApplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -58,21 +62,54 @@ public class JobApplication extends AppCompatActivity {
         setTitle("Job Application");
         model = new JobApplicationModel();
 
-        // Inicializacion de los campos
-        this.firstname = findViewById(R.id.first_name);
-        this.lastname = findViewById(R.id.last_name);
-        this.street_address = findViewById(R.id.street_address_line);
-        this.street_address_2 = findViewById(R.id.street_address_line2);
-        this.city = findViewById(R.id.city);
-        this.state = findViewById(R.id.province);
-        this.zip = findViewById(R.id.postal_code);
-        this.country = findViewById(R.id.country);
-        this.email = findViewById(R.id.email);
-        this.area_code = findViewById(R.id.area_code);
-        this.phone = findViewById(R.id.phone_number);
-        this.job = findViewById(R.id.position);
-        this.start_date = findViewById(R.id.start_date);
-        this.send_data = findViewById(R.id.send_data);
+        // INICIALIZACION DE ELEMENTOS CON R
+        initElements();
+
+        // ERROR HANDLER
+        model.getJobApplicationFormState().observe(this, new Observer<JobApplicationFormState>() {
+            @Override
+            public void onChanged(@Nullable JobApplicationFormState loginFormState) {
+
+                if (loginFormState == null) {
+                    return;
+                }
+                send_data.setEnabled(loginFormState.isDataValid());
+
+                if (loginFormState.getFirstNameError() != null) {
+                    firstname.setError(getString(loginFormState.getFirstNameError()));
+                }
+                if (loginFormState.getLastNameError() != null) {
+                    lastname.setError(getString(loginFormState.getLastNameError()));
+                }
+                if (loginFormState.getStreetAdrrError() != null) {
+                    street_address.setError(getString(loginFormState.getStreetAdrrError()));
+                }
+                if (loginFormState.getStreetAdrr2Error() != null) {
+                    street_address_2.setError(getString(loginFormState.getStreetAdrr2Error()));
+                }
+                if (loginFormState.getCityError() != null) {
+                    city.setError(getString(loginFormState.getCityError()));
+                }
+                if (loginFormState.getProvinceError() != null) {
+                    state.setError(getString(loginFormState.getProvinceError()));
+                }
+                if (loginFormState.getZipError() != null) {
+                    zip.setError(getString(loginFormState.getZipError()));
+                }
+                if (loginFormState.getEmailError() != null) {
+                    email.setError(getString(loginFormState.getEmailError()));
+                }
+                if (loginFormState.getAreaError() != null) {
+                    area_code.setError(getString(loginFormState.getAreaError()));
+                }
+                if (loginFormState.getPhoneError() != null) {
+                    phone.setError(getString(loginFormState.getPhoneError()));
+                }
+                if (loginFormState.getDateError() != null) {
+                    start_date.setError(getString(loginFormState.getDateError()));
+                }
+            }
+        });
 
         //Inicializacion de spinner
         initSpinner();
@@ -81,6 +118,7 @@ public class JobApplication extends AppCompatActivity {
         // BY https://www.tutlane.com/tutorial/android/android-datepicker-with-examples
         start_date.setInputType(InputType.TYPE_NULL);
         start_date.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
@@ -93,6 +131,7 @@ public class JobApplication extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 start_date.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                                start_date.setError(null);
                             }
 
                         }, year, month, day);
@@ -100,14 +139,14 @@ public class JobApplication extends AppCompatActivity {
             }
         });
 
-        send_data.setOnClickListener(new View.OnClickListener(){
+        send_data.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 JobRequest jobRequest = getJobByFields();
                 model.addJobRequest(jobRequest);
-                Intent intent = getIntent();
-                finish();
+                Toast.makeText(getApplicationContext(), "Succefull!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -162,7 +201,7 @@ public class JobApplication extends AppCompatActivity {
         this.country.setAdapter(adapterCountry);
     }
 
-    private JobRequest getJobByFields(){
+    private JobRequest getJobByFields() {
 
         Date date = picker == null ? new Date() : new Date(picker.getDatePicker().getYear(), picker.getDatePicker().getMonth(), picker.getDatePicker().getDayOfMonth());
         int zip = (this.zip.getText().toString().isEmpty()) ? 1 : Integer.parseInt(this.zip.getText().toString());
@@ -196,9 +235,9 @@ public class JobApplication extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.logout:
-                Toast.makeText(getApplicationContext(), "See ya!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "See ya!", Toast.LENGTH_LONG).show();
                 intent = new Intent(JobApplication.this, MainActivity.class);
                 CurrentUser.setUser(null);
                 startActivity(intent);
@@ -208,5 +247,66 @@ public class JobApplication extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private void initElements() {
+        // Inicializacion de los campos
+        this.firstname = findViewById(R.id.first_name);
+        this.lastname = findViewById(R.id.last_name);
+        this.street_address = findViewById(R.id.street_address_line);
+        this.street_address_2 = findViewById(R.id.street_address_line2);
+        this.city = findViewById(R.id.city);
+        this.state = findViewById(R.id.province);
+        this.zip = findViewById(R.id.postal_code);
+        this.country = findViewById(R.id.country);
+        this.email = findViewById(R.id.email);
+        this.area_code = findViewById(R.id.area_code);
+        this.phone = findViewById(R.id.phone_number);
+        this.job = findViewById(R.id.position);
+        this.start_date = findViewById(R.id.start_date);
+        this.send_data = findViewById(R.id.send_data);
+
+        TextWatcher afterTextChangedListener = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // ignore
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // ignore
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                model.dataChanged(
+                        firstname.getText().toString().trim(),
+                        lastname.getText().toString().trim(),
+                        street_address.getText().toString().trim(),
+                        street_address_2.getText().toString().trim(),
+                        city.getText().toString().trim(),
+                        state.getText().toString().trim(),
+                        zip.getText().toString().trim(),
+                        email.getText().toString().trim(),
+                        area_code.getText().toString().trim(),
+                        phone.getText().toString().trim(),
+                        start_date.getText().toString().trim()
+                );
+            }
+        };
+
+        // Ligamos los eventos
+        this.firstname.addTextChangedListener(afterTextChangedListener);
+        this.lastname.addTextChangedListener(afterTextChangedListener);
+        this.street_address.addTextChangedListener(afterTextChangedListener);
+        this.street_address_2.addTextChangedListener(afterTextChangedListener);
+        this.city.addTextChangedListener(afterTextChangedListener);
+        this.state.addTextChangedListener(afterTextChangedListener);
+        this.zip.addTextChangedListener(afterTextChangedListener);
+        this.email.addTextChangedListener(afterTextChangedListener);
+        this.area_code.addTextChangedListener(afterTextChangedListener);
+        this.phone.addTextChangedListener(afterTextChangedListener);
+        this.start_date.addTextChangedListener(afterTextChangedListener);
+        send_data.setEnabled(true);
     }
 }
