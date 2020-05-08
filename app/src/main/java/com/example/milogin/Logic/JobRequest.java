@@ -10,7 +10,6 @@ public class JobRequest implements Serializable {
     private Job job;
 
     public JobRequest(Person applicant, Job job, Date date){
-
         this.applicant = applicant;
         this.job = job;
         this.start_date = date;

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Person implements Serializable
 {
-    private String fullname;
+    private String firstname;
+    private String lastname;
     private String street_address;
     private String street_address_2;
     private String city;
@@ -15,10 +16,9 @@ public class Person implements Serializable
     private int area_code;
     private int phone;
 
-    public Person(String fullname, String street_address, String street_address_2, String city, String state, int zip, String country
-            , String email, int area_code, int phone){
-
-        this.fullname = fullname;
+    public Person(String firstname, String lastname, String street_address, String street_address_2, String city, String state, int zip, String country, String email, int area_code, int phone) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.street_address = street_address;
         this.street_address_2 = street_address_2;
         this.city = city;
@@ -31,15 +31,15 @@ public class Person implements Serializable
     }
 
     public Person(){
-        this("","","","","",0,"","",0,0);
+        this("","","","","","",0,"","",0,0);
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getStreet_address() {
@@ -114,10 +114,19 @@ public class Person implements Serializable
         this.phone = phone;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "fullname='" + fullname + '\'' +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", street_address='" + street_address + '\'' +
                 ", street_address_2='" + street_address_2 + '\'' +
                 ", city='" + city + '\'' +

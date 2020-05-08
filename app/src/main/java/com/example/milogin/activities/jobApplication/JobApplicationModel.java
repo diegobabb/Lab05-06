@@ -9,7 +9,17 @@ import java.util.Collections;
 import java.util.Locale;
 
 public class JobApplicationModel {
-    private ArrayList<Job> jobs = Data.getInstance().getJobs();
+    private ArrayList<Job> jobs;
+    private ArrayList<String> countries;
+
+    public JobApplicationModel() {
+        this.jobs = Data.getInstance().getJobs();
+        this.countries = Data.getInstance().getCountries();
+    }
+
+    public ArrayList<String> getCountries() {
+        return countries;
+    }
 
     public ArrayList<String> getJobsNames(){
 
@@ -19,19 +29,6 @@ public class JobApplicationModel {
         }
 
         return jobs_names;
-    }
-
-    public ArrayList<String> getCountries(){
-        Locale[] locales = Locale.getAvailableLocales();
-        ArrayList<String> countries = new ArrayList<String>();
-        for (Locale locale : locales) {
-            String country = locale.getDisplayCountry();
-            if (country.trim().length()>0 && !countries.contains(country)) {
-                countries.add(country);
-            }
-        }
-        Collections.sort(countries);
-        return countries;
     }
 
     public void addJobRequest(JobRequest request){

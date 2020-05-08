@@ -3,6 +3,7 @@ package com.example.milogin.activities.jobApplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,8 +25,10 @@ import com.example.milogin.Logic.Job;
 import com.example.milogin.Logic.JobRequest;
 import com.example.milogin.Logic.Person;
 import com.example.milogin.Logic.CurrentUser;
+import com.example.milogin.activities.JobApplicationList.JobApplicationList;
 import com.example.milogin.activities.login.MainActivity;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -43,6 +46,7 @@ public class JobApplication extends AppCompatActivity {
     private Toolbar toolbar;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +111,42 @@ public class JobApplication extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.getExtras() != null) {
+                JobRequest jobRequest = (JobRequest) intent.getSerializableExtra(JobApplicationList.VER_JOBREQUEST);
+                if (jobRequest != null) {
+                    Person person = jobRequest.getApplicant();
+                    this.firstname.setText(person.getFirstname());
+                    this.firstname.setEnabled(false);
+                    this.lastname.setText(person.getLastname());
+                    this.lastname.setEnabled(false);
+                    this.street_address.setText(person.getStreet_address());
+                    this.street_address.setEnabled(false);
+                    this.street_address_2.setText(person.getStreet_address_2());
+                    this.street_address_2.setEnabled(false);
+                    this.city.setText(person.getCity());
+                    this.city.setEnabled(false);
+                    this.state.setText(person.getState());
+                    this.state.setEnabled(false);
+                    this.zip.setText(Integer.toString(person.getZip()));
+                    this.zip.setEnabled(false);
+                    this.country.setSelection(model.getCountries().indexOf(person.getCountry()));
+                    this.country.setEnabled(false);
+                    this.email.setText(person.getEmail());
+                    this.email.setEnabled(false);
+                    this.area_code.setText(Integer.toString(person.getArea_code()));
+                    this.area_code.setEnabled(false);
+                    this.phone.setText(Integer.toString(person.getPhone()));
+                    this.phone.setEnabled(false);
+                    this.job.setSelection(model.getJobs().indexOf(jobRequest.getJob()));
+                    this.job.setEnabled(false);
+                    this.start_date.setText(android.text.format.DateFormat.format("dd/MM/yyyy", jobRequest.getStart_date()));
+                    this.start_date.setEnabled(false);
+                    this.send_data.setEnabled(false);
+                }
+            }
+        }
     }
 
     private void initSpinner() {
@@ -132,7 +171,8 @@ public class JobApplication extends AppCompatActivity {
         Job job = model.getJobByIndex(this.job.getSelectedItemPosition());
 
         Person applicant = new Person(
-                firstname.getText().toString().trim() + "" + lastname.getText().toString().trim(),
+                firstname.getText().toString().trim(),
+                lastname.getText().toString().trim(),
                 street_address.getText().toString().trim(),
                 street_address_2.getText().toString().trim(),
                 city.getText().toString().trim(),

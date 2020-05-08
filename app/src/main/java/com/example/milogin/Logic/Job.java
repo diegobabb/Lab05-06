@@ -1,6 +1,7 @@
 package com.example.milogin.Logic;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Job implements Serializable {
 
@@ -38,5 +39,18 @@ public class Job implements Serializable {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Job)) return false;
+        Job job = (Job) o;
+        return getDescription().equals(job.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDescription());
     }
 }
