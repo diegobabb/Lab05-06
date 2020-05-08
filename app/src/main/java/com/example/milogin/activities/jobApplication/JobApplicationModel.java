@@ -14,9 +14,20 @@ import java.util.Locale;
 
 public class JobApplicationModel {
 
-    private ArrayList<Job> jobs = Data.getInstance().getJobs();
+    private ArrayList<Job> jobs;
     private MutableLiveData<JobApplicationFormState> jobApplicationFormState = new MutableLiveData<>();
     private MutableLiveData<JobApplicationFormResult> jobApplicationFormResult = new MutableLiveData<>();
+
+    private ArrayList<String> countries;
+
+    public JobApplicationModel() {
+        this.jobs = Data.getInstance().getJobs();
+        this.countries = Data.getInstance().getCountries();
+    }
+
+    public ArrayList<String> getCountries() {
+        return countries;
+    }
 
     LiveData<JobApplicationFormState> getJobApplicationFormState() {
         return jobApplicationFormState;
